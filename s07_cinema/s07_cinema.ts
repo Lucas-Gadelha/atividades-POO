@@ -39,7 +39,7 @@ class Cinema {
     indexOF(nome: string): number {
         //return this.fileira.findeIndex(c => c != null && c.nome == nome);
         for (let i=0; i < this.fileira.length; i++) {
-            if (this.fileira[i] != null && this.fileira[i].nome == nome){
+            if (this.fileira[i] != null && this.fileira[i]!.nome == nome){
                 return i;
             }
         }
@@ -91,7 +91,7 @@ class Cinema {
                 console.log("-");
                 livres++
             } else {
-            console.log(this.fileira[i].nome);
+            console.log(this.fileira[i]!.nome);
             }
         }        
         return "sala com: " + this.fileira.length + " assentos \nlugares livres: " + livres;
@@ -101,12 +101,14 @@ class Cinema {
 
 let lucas = new Cliente("lucas", 99);
 let lazaro = new Cliente("Lázaro", 88);
-let diogo = new Cliente("Diogo", 77)
+let diogo = new Cliente("Diogo", 77);
+let jeff = new Cliente("Jeff", 69);
 let sala = new Cinema(20);
 
 sala.reservar(lucas, 15);
 sala.reservar(lazaro, 14);
 sala.reservar(diogo, 8);
+sala.reservar(jeff, 10);
 console.log(sala.toString());
 sala.cancelarCadeira(14);
 sala.cancelarNome("lucas");
